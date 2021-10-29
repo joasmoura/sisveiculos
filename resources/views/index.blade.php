@@ -15,24 +15,27 @@
     </div>
 
     <div class="row">
-        @forelse($veiculos as $veiculo)
-        @if($veiculo->usuario)
-            <a href="{{route('veiculo', [$veiculo->usuario->uri,$veiculo->uri])}}" class="col-md-3 my-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{$veiculo->fotos()->first()->foto}}" class="card-img-top imagem-carro" alt="{{$veiculo->modelo}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$veiculo->modelo}} ({{ ($veiculo->tipo == 'moto' ? 'Moto' : 'Carro') }})</h5>
-                        <p class="card-text">Placa {{$veiculo->placa}}</p>
+        @if(isset($veiculos))
+            @forelse($veiculos as $veiculo)
+            @if($veiculo->usuario)
+                <a href="{{route('veiculo', [$veiculo->usuario->uri,$veiculo->uri])}}" class="col-md-3 my-2">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{$veiculo->fotos()->first()->foto}}" class="card-img-top imagem-carro" alt="{{$veiculo->modelo}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$veiculo->modelo}} ({{ ($veiculo->tipo == 'moto' ? 'Moto' : 'Carro') }})</h5>
+                            <p class="card-text">Placa {{$veiculo->placa}}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            @endif
+            @empty
+            @endforelse
+            
+            
+            <div class="col-md-12">
+                {{$veiculos->links()}}
+            </div>
         @endif
-        @empty
-        @endforelse
-
-        <div class="col-md-12">
-            {{$veiculos->links()}}
-        </div>
     </div>
 
 </x-site-layout>

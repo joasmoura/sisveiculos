@@ -9,11 +9,17 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function index(){
-        $veiculos = Veiculo::with('usuario')->paginate(15);
-        return view('index', compact('veiculos'));
+        if(auth()->check()){
+            $veiculos = Veiculo::with('usuario')->paginate(15);
+            return view('index', compact('veiculos'));
+        }
+        return view('index');
     }
 
     public function veiculo($uriusuario, $uriveiculo){
+        if(!Auth()->check()){
+            return redirect()->route('index');
+        }
         $usuario = User::where('uri', $uriusuario)->first();
         if($usuario){
             $veiculo = $usuario->veiculos()->where('uri', $uriveiculo)->first();
@@ -28,6 +34,9 @@ class SiteController extends Controller
     }
 
     public function usuario($uri){
+        if(!auth()->check()){
+            return redirect()->route('index');
+        }
         $usuario = User::with('veiculos')->where('uri', $uri)->first();
 
         if($usuario){
