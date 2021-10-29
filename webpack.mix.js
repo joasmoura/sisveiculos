@@ -11,7 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+])
+.copyDirectory('resources/views/assets/plugins','public/assets/plugins')
+.scripts('resources/views/assets/js/jquery.min.js', 'public/assets/js/jquery.min.js')
+.scripts('resources/views/assets/js/scripts.js', 'public/assets/js/scripts.js')
+.scripts('resources/views/assets/js/jquery.form.js', 'public/assets/js/jquery.form.js')
+;
