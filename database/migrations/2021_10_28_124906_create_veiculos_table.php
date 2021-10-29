@@ -16,6 +16,7 @@ class CreateVeiculosTable extends Migration
         Schema::create('veiculos', function (Blueprint $table) {
             $table->id();
             $table->string('placa');
+            $table->string('uri');
             $table->string('modelo');
             $table->string('cor');
             $table->enum('tipo', ['carro', 'moto']);
