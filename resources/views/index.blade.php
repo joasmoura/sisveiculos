@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="bg-light py-5 p-5 rounded">
-        <p class="lead">Não perca tempo, anuncie seus veículos de forma rápida e gratuitamente</p>
+        <p class="lead">Não perca tempo, anuncie seus veículos de forma rápida e gratuita</p>
         
         @if(auth()->check())
             <a class="btn btn-lg btn-primary" href="{{route('painel.index')}}" role="button">Painel »</a>
