@@ -39,7 +39,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link excluirUsuario" href="{{route("painel.usuarios.destroy", auth()->user()->id)}}" target="_blank"><i class="fa fa-eye"></i> Deletar conta</a>
+                            <a class="nav-link excluirUsuario" href="{{route("painel.usuarios.destroy", auth()->user()->id)}}" target="_blank"><i class="fa fa-trash"></i> Deletar conta</a>
                         </li>
                     </ul>
                 </div>

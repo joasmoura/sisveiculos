@@ -34,6 +34,7 @@ function excluirUsuario(link, method, msg){
 }
 
 $('body').on('submit', 'form[name="formUsuario"]', function(e){
+    $('button[type="submit"]').attr('disabled', true)
     e.preventDefault()
     $(this).ajaxSubmit({
         url:$(this).attr('action'),
@@ -46,6 +47,7 @@ $('body').on('submit', 'form[name="formUsuario"]', function(e){
                     alert(erros.errors[erro][0])
                 }
             }
+            $('button[type="submit"]').attr('disabled', false)
         },
         success:function(r){
             if(r.status == true){
@@ -59,6 +61,7 @@ $('body').on('submit', 'form[name="formUsuario"]', function(e){
             }else{
                 alert(r.msg)
             }
+            $('button[type="submit"]').attr('disabled', false)
         }
     })
 
@@ -66,6 +69,7 @@ $('body').on('submit', 'form[name="formUsuario"]', function(e){
 
 $('body').on('submit', 'form[name="formVeiculo"]', function(e){
     e.preventDefault()
+    $('button[type="submit"]').attr('disabled', true)
 
     $(this).ajaxSubmit({
         url:$(this).attr('action'),
@@ -78,6 +82,7 @@ $('body').on('submit', 'form[name="formVeiculo"]', function(e){
                     alert(erros.errors[erro][0])
                 }
             }
+            $('button[type="submit"]').attr('disabled', false)
         },
         success:function(r){
             if(r.status){
@@ -91,7 +96,7 @@ $('body').on('submit', 'form[name="formVeiculo"]', function(e){
             }else{
                 alert(r.msg)
             }
-
+            $('button[type="submit"]').attr('disabled', false)
         }
     })
 
@@ -116,7 +121,9 @@ $('body').on('click','.excluirVeiculo',function(e){
     }
 })
 
-$('.gallery').lightGallery({
-    thumbnail: true,
-    selector: '.imagem'
-});
+if($('.gallery').length){
+    $('.gallery').lightGallery({
+        thumbnail: true,
+        selector: '.imagem'
+    })
+}
