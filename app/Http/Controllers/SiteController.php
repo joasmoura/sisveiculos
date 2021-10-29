@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
+    #Carrega página inicial do site
+    #Verifica se existe usuário logado e se estiver carrega veículos cadastrados
     public function index(){
         if(auth()->check()){
             $veiculos = Veiculo::with('usuario')->paginate(15);
@@ -16,6 +18,7 @@ class SiteController extends Controller
         return view('index');
     }
 
+    #Página de detalhes do veículo
     public function veiculo($uriusuario, $uriveiculo){
         if(!Auth()->check()){
             return redirect()->route('index');
@@ -33,6 +36,7 @@ class SiteController extends Controller
         }        
     }
 
+    #Página para listagem dos veículos de um usuário
     public function usuario($uri){
         if(!auth()->check()){
             return redirect()->route('index');

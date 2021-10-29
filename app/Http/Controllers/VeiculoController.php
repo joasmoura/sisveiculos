@@ -26,6 +26,7 @@ class VeiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    # Abrindo form para cadastro de veículo
     public function create()
     {
         return view('dashboard.veiculos.form');
@@ -37,8 +38,10 @@ class VeiculoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    # Cadastrando novo veículo
     public function store(VeiculoFormRequest $request)
     {
+        # script para validar a placa do veículo
         $regex = '/[A-Z]{3}[0-9][0-9A-Z][0-9]{2}/';
 
         if (preg_match($regex, $request->placa) !== 1) {// placa inválida
@@ -64,7 +67,6 @@ class VeiculoController extends Controller
         }
 
         if($salvo){//Se os dados forem salvos retorna json com código 200
-
             if($request->file('fotos')){
                 foreach($request->file('fotos') as $key => $foto){
                     $extensao = '.'.$foto->getClientOriginalExtension();
@@ -91,6 +93,8 @@ class VeiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    # Listando veículo para o administrador
     public function show($id)
     {
         $usuario = User::find($id);
@@ -107,6 +111,8 @@ class VeiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     # Abre form de edição do veículo
     public function edit($id)
     {
         $usuario = auth()->user();
@@ -125,6 +131,8 @@ class VeiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     # Atualiza os dados do veículo e vincula mais fotos caso forem selecionadas
     public function update(VeiculoFormRequest $request, $id)
     {
         $regex = '/[A-Z]{3}[0-9][0-9A-Z][0-9]{2}/';
@@ -175,6 +183,8 @@ class VeiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     # Excluindo veículo
     public function destroy($id)
     {
         $veiculo = Veiculo::with('fotos')->find($id);

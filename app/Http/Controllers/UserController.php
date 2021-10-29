@@ -16,6 +16,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    # Lista os usuários cadastrados somente para o admin do sistema
+    # Se um usuário comum acesar a rota referente a esse método ele será redirecionado para 
+    # a página inicial do painel
     public function index()
     {
         $autenticado = auth()->user();
@@ -27,16 +31,26 @@ class UserController extends Controller
         return view('dashboard.users.index', compact('usuarios'));
     }
 
+    # Lista os usuários desativados somente para o admin do sistema
+    # Se um usuário comum acesar a rota referente a esse método ele será redirecionado para 
+    # a página inicial do painel
     public function desativados()
     {
+        $autenticado = auth()->user();
+
+        if($autenticado->perfil === 'usuario'){
+            return redirect()->route('painel.index');
+        }
         $usuarios = User::onlyTrashed()->where('perfil','usuario')->paginate(15);
         return view('dashboard.users.index', compact('usuarios'));
     }
 
+    # Abre form para alter dados do usuário logado
     public function perfil(){
         return view('dashboard.users.perfil');
     }
 
+    # Salvando dados do usuário logado
     public function salvarPerfil(UserFormRequest $request){
         $usuario = auth()->user();
 
@@ -92,6 +106,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    # Abre formulário para edição do usuário
     public function edit($id)
     {
         $usuario = auth()->user();
@@ -113,6 +128,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     # Atualizando informações do usuário
     public function update(UserFormRequest $request, $id)
     {
         $usuario = User::find($id);
@@ -142,6 +159,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     # Desativando o usuário, deixando-o em um estado que não possa acessar o sistema
+     # e também não lista seus veículos
+     # Função orquestrada pelo SoftDelets
     public function destroy($id)
     {
         $usuario = User::with('veiculos')->find($id);
@@ -156,6 +177,7 @@ class UserController extends Controller
         }
     }
 
+    # Apagando usuário definitivamente e excluindo os veículos e respectivamente as fotos cadastradas
     public function destroy_permanente($id){
         $usuario = User::withTrashed()->with('veiculos')->find($id);
 
@@ -184,6 +206,7 @@ class UserController extends Controller
         }
     }
 
+    # Restaurando usuário que estava desativado pelo SoftDelets
     public function restaurar($id){
         $usuario = User::withTrashed()->find($id);
 
