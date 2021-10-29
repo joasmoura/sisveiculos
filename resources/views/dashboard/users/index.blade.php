@@ -30,7 +30,7 @@
                                 <a href="{{route('painel.usuarios.restaurar', $usuario->id)}}" class="btn btn-success btn-sm" title="Restaurar Usuário"><i class="fa fa-edit"></i> Restaurar usuário</a>
                             @else
                                 <a href="{{route('painel.usuarios.destroy', $usuario->id) }}" 
-                                    class="btn btn-danger btn-sm excluir" title="Excluir Usuário"><i class="fa fa-trash"></i> Excluir</a>
+                                    class="btn btn-danger btn-sm excluirUsuario" title="Excluir Usuário"><i class="fa fa-trash"></i> Excluir</a>
                                 <a href="{{route('painel.veiculos.show', $usuario->id)}}" class="btn btn-primary btn-sm" title="Ver Veículos"><i class="fa fa-eye"></i> Veículos</a>
                                 <a href="{{route('painel.usuarios.edit', $usuario->id)}}" class="btn btn-success btn-sm" title="Editar Usuário"><i class="fa fa-edit"></i> Editar</a>
                             @endif

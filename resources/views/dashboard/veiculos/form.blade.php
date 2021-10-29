@@ -60,7 +60,7 @@
                 @if(isset($veiculo))
                     @forelse($veiculo->fotos()->get() as $foto)
                       <div class="card" style="width: 18rem;">
-                        <img src="{{Storage::url($foto->url)}}" class="card-img-top">
+                        <img src="{{$foto->foto}}" class="card-img-top imagem-carro">
                       </div>
                     @empty
 

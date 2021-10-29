@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/assets/css/styles.css": "/assets/css/styles.css",
     "/assets/js/jquery.min.js": "/assets/js/jquery.min.js",
     "/assets/js/scripts.js": "/assets/js/scripts.js",
     "/assets/js/jquery.form.js": "/assets/js/jquery.form.js"

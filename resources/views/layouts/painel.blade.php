@@ -11,6 +11,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome-free/css/all.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
         
     </head>
     <body>

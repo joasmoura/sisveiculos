@@ -21,4 +21,8 @@ class Veiculo extends Model
     public function fotos(){
         return $this->hasMany(FotosVeiculos::class);
     }
+
+    public function usuario(){
+        return $this->belongsTo(User::class,'user_id', 'id');
+    }
 }

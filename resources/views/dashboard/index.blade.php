@@ -16,7 +16,7 @@
             @forelse(auth()->user()->veiculos()->get() as $veiculo)
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{Storage::url($veiculo->fotos()->first()->url)}}" class="card-img-top" alt="{{$veiculo->modelo}}">
+                        <img src="{{$veiculo->fotos()->first()->foto}}" class="card-img-top imagem-carro" alt="{{$veiculo->modelo}}">
                         <div class="card-body">
                             <h5 class="card-title">{{$veiculo->modelo}} ({{ ($veiculo->tipo == 'moto' ? 'Moto' : 'Carro') }})</h5>
                             <p class="card-text">Placa {{$veiculo->placa}}</p>

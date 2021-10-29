@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PainelController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\VeiculoController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{usuario}/veiculos', [SiteController::class, 'usuario'])->name('usuario');
+Route::get('/{usuario}/veiculo/{veiculo}', [SiteController::class, 'veiculo'])->name('veiculo');
+Route::get('/', [SiteController::class, 'index'])->name('index');
 
 Route::name('painel.')->middleware('auth')->prefix('painel')->group(function () {
     Route::get('/', [PainelController::class, 'index'])->name('index');
