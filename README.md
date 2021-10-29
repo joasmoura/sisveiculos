@@ -17,6 +17,7 @@ npm run production (Para gerar os assets em produção)
 Bibliotecas externas utilizadas
 Jquery 1.6
 Bootstrap 5
+Light Gallery
 
 Recursos utilizados
 Validação de placa: https://ricardo.coelho.eti.br/regex-mercosul/

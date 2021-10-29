@@ -10,11 +10,13 @@
     <div class="bg-light py-5 p-5 rounded">
         <div class="row">
             <div class="col-md-4">
-                <div class="row">
+                <div class="row gallery">
                     @forelse($veiculo->fotos()->get() as $foto)
                         <div class="col-md-4">
-                            <div class="card">
-                                <img src="{{$foto->foto}}" class="card-img-top" alt="{{$veiculo->modelo}}">
+                            <div class="card ">
+                                <a href="{{$foto->foto}}" class="imagem">
+                                    <img src="{{$foto->foto}}" class="card-img-top" alt="{{$veiculo->modelo}}">
+                                </a>
                             </div>
                         </div>
                     @empty

@@ -115,3 +115,8 @@ $('body').on('click','.excluirVeiculo',function(e){
         })
     }
 })
+
+$('.gallery').lightGallery({
+    thumbnail: true,
+    selector: '.imagem'
+});

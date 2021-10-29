@@ -11,6 +11,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome-free/css/all.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/plugins/light-gallery/css/lightgallery.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
         
     </head>
@@ -22,5 +23,11 @@
         <main class="container">
             {{ $slot }}
         </main>
+
+        <script src="{{ asset('assets/js/jquery.min.js') }}" defer></script>
+        <script src="{{ asset('assets/js/jquery.form.js') }}" defer></script>
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.js') }}" defer></script>
+        <script src="{{ asset('assets/plugins/light-gallery/js/lightgallery-all.min.js') }}" defer></script>
+        <script src="{{ asset('assets/js/scripts.js') }}" defer></script>
     </body>
 </html>
